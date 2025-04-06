@@ -36,7 +36,7 @@ def main():
         for p in programs:
             msg += f"\n▶ {p['title']}\n🕒 {p['start_time']}\n{p['detail']}\n"
     else:
-        msg = "📡 今週はイッテQありません。しょぼぼ･･･"
+        msg = "📡 今週はイッテQありません。しょぼぼぼ･･･"
 
     success = send_line_message(msg)
     print("通知送信結果:", "成功" if success else "失敗")
