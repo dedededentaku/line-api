@@ -1,0 +1,25 @@
+name: Check Sunday Programs
+
+on:
+  workflow_dispatch:  # 手動実行用（pushトリガーに変更も可能）
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: リポジトリをチェックアウト
+      uses: actions/checkout@v3
+
+    - name: Pythonをセットアップ
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+
+    - name: 依存ライブラリをインストール
+      run: |
+        pip install requests beautifulsoup4
+
+    - name: スクリプトを実行
+      run: |
+        python check_program.py
