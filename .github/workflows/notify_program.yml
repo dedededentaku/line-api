@@ -1,0 +1,32 @@
+name: TV Program Notify
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # 毎週日曜午前9時
+  workflow_dispatch:
+
+jobs:
+  check_and_notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13.2
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 dotenv
+
+      - name: Scrape program info
+        run: python scripts/scrape_program.py
+
+      - name: Filter by time
+        run: python scripts/check_target_time.py
+
+      - name: Send LINE notification
+        run: python scripts/notify_line.py
+        env:
+          LINE_ACCESS_TOKEN: ${{ secrets.LINE_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
