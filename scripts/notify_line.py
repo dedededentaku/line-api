@@ -10,13 +10,12 @@ USER_ID = os.environ.get("LINE_USER_ID")
 INPUT_FILE = "data/filtered_programs.json"
 
 def send_line_message(text):
-    url = "https://api.line.me/v2/bot/message/push"
+    url = "https://api.line.me/v2/bot/message/broadcast"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {LINE_TOKEN}"
     }
     payload = {
-        "to": USER_ID,
         "messages": [
             {
                 "type": "text",
