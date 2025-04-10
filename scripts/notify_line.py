@@ -31,7 +31,7 @@ def main():
         programs = json.load(f)
 
     if programs:
-        msg = "📺 今週はイッテQあります！やったね！\n"
+        msg = "📺 今週はイッテQあります！やったね！！\n"
         for p in programs:
             msg += f"\n▶ {p['title']}\n🕒 {p['start_time']}\n{p['detail']}\n"
     else:
