@@ -2,7 +2,7 @@ name: TV Program Notify
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # 毎週日曜午前9時
+    - cron: '0 7 * * 6'  # 毎週土曜午後4時
   workflow_dispatch:
 
 jobs:
